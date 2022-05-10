@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 export default class ApplicationRoute extends Route {
   @service store;
 
-  beforeModel() {
+  async beforeModel() {
     const user1 = this.store.createRecord('user', {
       id: 1,
       username: 'admin',
@@ -22,8 +22,8 @@ export default class ApplicationRoute extends Route {
       photoURL:
         'https://www.gdzieindziej.eu/wp-content/uploads/2018/04/P1090053.webp',
     });
-    user1.save();
-    user2.save();
+    await user1.save();
+    await user2.save();
 
     const post1 = this.store.createRecord('post', {
       id: 1,
@@ -46,8 +46,9 @@ export default class ApplicationRoute extends Route {
       body: 'Zawartość testowa 3',
       isDeleted: false,
     });
-    post1.save();
-    post2.save();
-    post3.save();
+
+    await post1.save();
+    await post2.save();
+    await post3.save();
   }
 }
