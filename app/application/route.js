@@ -11,12 +11,16 @@ export default class ApplicationRoute extends Route {
       password: 'admin123',
       email: 'admin@admin.com',
       isAdmin: true,
+      photoURL:
+        'https://naukawpolsce.pl/sites/default/files/styles/strona_glowna_slider_750x420/public/202005/portretProboscis_monkey_%28Nasalis_larvatus%29_male_head_0.jpg?itok=4nPIZ3jj',
     });
     const user2 = this.store.createRecord('user', {
       id: 2,
       username: 'user',
       password: 'user123',
       email: 'user@user.com',
+      photoURL:
+        'https://www.gdzieindziej.eu/wp-content/uploads/2018/04/P1090053.webp',
     });
     user1.save();
     user2.save();
