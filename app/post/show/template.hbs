@@ -1,15 +1,6 @@
 {{page-title 'Show'}}
 <Header>post</Header>
 
-<div class='card mx-auto'>
-  <div class='card-header'>
-    {{this.model.owner.username}}
-  </div>
-  <div class='card-body'>
-    <blockquote class='blockquote mb-0'>
-      <p>{{this.model.title}}</p>
-      <footer class='blockquote-footer'>{{this.model.body}}
-      </footer>
-    </blockquote>
-  </div>
-</div>
+<Post::Card @post={{this.model}} />
+
+{{! 4-15 linia w komponent o nazwie  }}
