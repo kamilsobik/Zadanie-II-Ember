@@ -2,7 +2,7 @@
 <Header>Settings</Header>
 
 <div class='container'>
-  <form {{!-- {{on 'submit' this.onSubmit}} --}}>
+  <form {{on 'submit' this.onSubmit}}>
     <div class='mb-3 row'>
       <label for='username' class='col-sm-2 col-form-label'>Username</label>
       <div class='col-sm-10'>
@@ -11,7 +11,8 @@
           class='form-control'
           id='username'
           placeholder='username'
-          {{!-- {{on 'input' this.onUsernameChange}} --}}
+          value={{this.model.username}}
+          {{on 'input' this.onUsernameChange}}
         />
       </div>
     </div>
@@ -23,7 +24,8 @@
           class='form-control'
           id='email'
           placeholder='email'
-          {{!-- {{on 'input' this.onEmailChange}} --}}
+          value={{this.model.email}}
+          {{on 'input' this.onEmailChange}}
         />
       </div>
     </div>
@@ -35,7 +37,8 @@
           class='form-control'
           id='photoURL'
           placeholder='photoURL'
-          {{!-- {{on 'input' this.onPhotoURLChange}} --}}
+          value={{this.model.photoURL}}
+          {{on 'input' this.onPhotoURLChange}}
         />
       </div>
     </div>
@@ -50,23 +53,27 @@
           class='form-control'
           id='inputPassword'
           placeholder='password'
-          {{!-- {{on 'input' this.onPasswordChange}} --}}
+          value={{this.model.password}}
+          {{on 'input' this.onPasswordChange}}
         />
       </div>
     </div>
     <div class='mb-3 row'>
       <div class='d-flex'>
-        <button type='submit' class='btn btn-primary w-50 me-1'>SAVE</button>
-        <button type='submit' class='btn btn-danger w-50 ms-1'>CANCEL</button>
+        <button
+          type='submit'
+          class='btn btn-primary w-50 me-1'
+          disabled={{this.shouldDisabledButton}}
+        >SAVE</button>
+        <button
+          type='button'
+          class='btn btn-danger w-50 ms-1'
+          disabled={{this.shouldDisabledButton}}
+          {{on 'click' this.discardChanges}}
+        >CANCEL</button>
       </div>
-
     </div>
   </form>
-  <div>
-  </div>
-  <div>
-    <span>Mam już konto. </span><LinkTo @route='login'>Zaloguj</LinkTo>
-  </div>
 </div>
 
 {{outlet}}
