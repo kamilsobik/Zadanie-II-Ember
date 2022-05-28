@@ -1,13 +1,10 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { storageFor } from 'ember-local-storage';
-
+import { inject as service } from '@ember/service';
 export default class NavbarComponent extends Component {
-  @storageFor('logged-as') loggedAs;
+  @service session;
 
   @action onLogout() {
-    console.log('Logout');
-    this.loggedAs.set('id', null);
-    window.location.href = '/login';
+    this.session.logoutUser();
   }
 }
