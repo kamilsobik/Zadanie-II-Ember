@@ -8,5 +8,5 @@ export default class UserModel extends Model {
   @attr('boolean', { defaultValue: false }) isDeleted;
   @attr('boolean', { defaultValue: false }) isAdmin;
   @hasMany('post') posts;
-  @hasMany('like') like;
+  @hasMany('like') likes;
 }
