@@ -50,5 +50,13 @@ export default class ApplicationRoute extends Route {
     await post1.save();
     await post2.save();
     await post3.save();
+
+    const like1 = {
+      user: user1,
+      post: post3,
+    };
+
+    const like1Model = this.store.createRecord('like', like1);
+    await like1Model.save();
   }
 }
