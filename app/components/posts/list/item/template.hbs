@@ -10,10 +10,27 @@
       {{@post.owner.username}}</h6>
     <p class='card-text'>{{@post.body}}</p>
     {{#if this.isAlreadyLikedByCurrenUser}}
-      <a href='#' class='card-link' {{on 'click' this.onDislike}}>Dislike ({{@post.likes.length}})</a>
+
+      <a href='#' class='card-link' {{on 'click' this.onDislike}}>Dislike ({{@post.likes.length}})
+         <EmberTooltip  @side="auto">
+         {{#each @post.likes as |like|}}
+         {{like.user.username}}
+         {{/each}}
+        </EmberTooltip>
+      </a>
+
     {{else}}
-      <a href='#' class='card-link' {{on 'click' this.onLike}}>Like ({{@post.likes.length}})</a>
+      <a href='#' class='card-link' {{on 'click' this.onLike}}>Like ({{@post.likes.length}})
+            {{#if @post.likes.length }}
+
+         <EmberTooltip  @side="auto">
+         {{#each @post.likes as |like|}}
+         {{like.user.username}}
+         {{/each}}
+        </EmberTooltip>
     {{/if}}
+        </a>
+      {{/if}}
     <a href='#' class='card-link'>Delete</a>
   </div>
 </div>
