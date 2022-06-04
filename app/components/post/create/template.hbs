@@ -5,5 +5,10 @@
 >Create post</button>
 
 {{#if this.isShowCreateModal}}
-  <Post::Create::Modal @onClose={{this.onHideModal}} />
+  <Post::Create::Modal
+    @onTitleChange={{this.onTitleChange}}
+    @onContentChange={{this.onContentChange}}
+    @onClose={{this.onHideModal}}
+    @onSaveChange={{this.onSaveChange}}
+  />
 {{/if}}

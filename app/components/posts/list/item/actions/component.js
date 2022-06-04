@@ -29,7 +29,6 @@ export default class PostsListItemComponent extends Component {
 
   @action
   async onLike() {
-    console.log('like');
     const createdLike = this.store.createRecord('like', {
       user: this.currentUser,
       post: this.currentPost,
