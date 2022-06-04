@@ -11,6 +11,7 @@
             type='email'
             class='form-control'
             id='postTitle'
+            value={{@title}}
             {{on 'input' @onTitleChange}}
           />
         </div>
@@ -20,6 +21,7 @@
             class='form-control'
             id='postContent'
             rows='3'
+            value={{@content}}
             {{on 'input' @onContentChange}}
           ></textarea>
         </div>
@@ -33,6 +35,7 @@
         <button
           type='button'
           class='btn btn-success'
+          disabled={{@hasEmptyField}}
           {{on 'click' @onSaveChange}}
         >Create post</button>
       </div>

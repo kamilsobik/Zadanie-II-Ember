@@ -10,12 +10,17 @@ export default class PostsListItemComponent extends Component {
   @tracked title = '';
   @tracked content = '';
 
+  get hasEmptyField() {
+    return !(this.title && this.content);
+  }
+
   @action onShowModal() {
     this.isShowCreateModal = true;
   }
 
   @action onHideModal() {
     this.isShowCreateModal = false;
+    this.clearFields();
   }
 
   @action onTitleChange(event) {
@@ -35,6 +40,12 @@ export default class PostsListItemComponent extends Component {
     };
     const postModel = this.store.createRecord('post', post);
     await postModel.save();
+    this.clearFields();
     this.isShowCreateModal = false;
+  }
+
+  clearFields() {
+    this.title = '';
+    this.content = '';
   }
 }
