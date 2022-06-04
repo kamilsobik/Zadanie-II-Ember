@@ -14,6 +14,19 @@ export default class PostsListItemComponent extends Component {
     return this.args.post;
   }
 
+  get isAlreadyLikedByCurrentUser() {
+    const { post } = this.args;
+    const likeModel = this.currentUser.likes.find((like) => {
+      return like.post.get('id') === this.currentPost.id;
+    });
+    const isLikeExists = Boolean(likeModel);
+    return isLikeExists;
+  }
+
+  get isCreatedByCurrentUser() {
+    return this.currentPost.owner.get('username') === this.currentUser.username;
+  }
+
   @action
   async onLike() {
     console.log('like');
@@ -32,12 +45,8 @@ export default class PostsListItemComponent extends Component {
     await like.destroyRecord();
   }
 
-  get isAlreadyLikedByCurrenUser() {
-    const { post } = this.args;
-    const likeModel = this.currentUser.likes.find((like) => {
-      return like.post.get('id') === this.currentPost.id;
-    });
-    const isLikeExists = Boolean(likeModel);
-    return isLikeExists;
+  @action
+  async onDelete() {
+    await this.currentPost.destroyRecord();
   }
 }
