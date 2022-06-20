@@ -10,9 +10,9 @@ export default class ApplicationRoute extends Route {
       username: 'admin',
       password: 'admin123',
       email: 'admin@admin.com',
+      isAdmin: true,
       photoURL:
         'https://naukawpolsce.pl/sites/default/files/styles/strona_glowna_slider_750x420/public/202005/portretProboscis_monkey_%28Nasalis_larvatus%29_male_head_0.jpg?itok=4nPIZ3jj',
-      isAdmin: true,
     };
     const user2 = {
       id: 2,
@@ -32,18 +32,21 @@ export default class ApplicationRoute extends Route {
       title: 'Tytuł testowy 1',
       body: 'Zawartość testowa 1',
       owner: user1Model,
+      createdAt: new Date('2022-10-06'),
     };
     const post2 = {
       id: 2,
       title: 'Tytuł testowy 2',
       body: 'Zawartość testowa 2',
       owner: user1Model,
+      createdAt: new Date('2022-09-06'),
     };
     const post3 = {
       id: 3,
       title: 'Tytuł testowy 3',
       body: 'Zawartość testowa 3',
       owner: user2Model,
+      createdAt: new Date('2022-02-06'),
     };
 
     const post1Model = this.store.createRecord('post', post1);
