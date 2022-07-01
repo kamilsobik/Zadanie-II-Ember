@@ -75,7 +75,6 @@ export default class HomePostsController extends Controller {
         );
       });
     }
-
     if (this.shouldBeFilteredFromDate) {
       return posts.filter((post) => {
         return moment(post.createdAt).isSameOrAfter(this.startDate);
