@@ -14,20 +14,24 @@ export default class PostsListItemComponent extends Component {
     return !(this.title && this.content);
   }
 
-  @action onShowModal() {
+  @action
+  onShowModal() {
     this.isShowCreateModal = true;
   }
 
-  @action onHideModal() {
+  @action
+  onHideModal() {
     this.isShowCreateModal = false;
     this.clearFields();
   }
 
-  @action onTitleChange(event) {
+  @action
+  onTitleChange(event) {
     this.title = event.target.value;
   }
 
-  @action onContentChange(event) {
+  @action
+  onContentChange(event) {
     this.content = event.target.value;
   }
 
