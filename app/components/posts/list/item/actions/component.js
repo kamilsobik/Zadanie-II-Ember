@@ -26,12 +26,12 @@ export default class PostsListItemComponent extends Component {
   get isCreatedByCurrentUser() {
     return this.currentPost.owner.get('username') === this.currentUser.username;
   }
-  
+
   @action
   async onDelete() {
     await this.currentPost.destroyRecord();
   }
-  
+
   @action
   async onLike() {
     const createdLike = this.store.createRecord('like', {
@@ -48,5 +48,4 @@ export default class PostsListItemComponent extends Component {
     });
     await like.destroyRecord();
   }
-
 }
