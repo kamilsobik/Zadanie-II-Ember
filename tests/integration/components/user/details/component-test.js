@@ -2,25 +2,28 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { faker } from '@faker-js/faker';
 
 module('Integration | Component | user/details', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    faker.setLocale('pl');
 
-    await render(hbs`<User::Details />`);
+    const user = {
+      id: faker.random.numeric(),
+      username: faker.name.firstName(),
+      password: faker.internet.password(20),
+      email: faker.internet.email(),
+      photoURL: faker.image.avatar(),
+    };
 
-    assert.dom(this.element).hasText('');
+    this.set('user', user);
+    await render(hbs`<User::Details  @user={{this.user}}/>`);
 
-    // Template block usage:
-    await render(hbs`
-      <User::Details>
-        template block text
-      </User::Details>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.dom('[data-test-username]').hasText(user.username);
+    assert.dom('[data-test-id]').hasText(user.id.toString());
+    assert.dom('[data-test-email]').hasText(user.email);
+    assert.dom('[data-test-password]').hasText(user.password);
   });
 });
