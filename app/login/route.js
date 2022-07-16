@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import Auth0Lock from 'auth0-lock';
+
 export default class LoginRoute extends Route {
   @service router;
   @service session;
