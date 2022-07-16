@@ -5,10 +5,8 @@ export default class UsersRoute extends Route {
   @service store;
 
   async model() {
-    console.log('start');
     await new Promise((resolve) => {
       setTimeout(() => {
-        console.log('dupa');
         resolve();
       }, 2000);
     });
